@@ -1,0 +1,79 @@
+@using SampleMVCDevexApp.Models
+
+<h2>Home</h2>
+
+@(Html.DevExtreme().DataGrid().ID("gridTest")
+	.ShowBorders(true)
+	.DataSource(d => d.Mvc()
+		.Controller("SampleData")
+		.LoadAction("GetTestData")
+		.InsertAction("InsertTestData")
+		.UpdateAction("UpdateTestData")
+		.DeleteAction("DeleteTestData")
+		.Key("Id"))
+	.Columns(columns => {
+		columns.Add().DataField("Id"); //.AllowEditing(false);
+		columns.Add().DataField("FirstName");
+		columns.Add().DataField("LastName");
+		columns.Add().DataField("Description");
+		columns.Add().DataField("Department");
+		columns.Add().DataField("Office");
+		columns.Add().DataField("Phone");
+		columns.Add().DataField("Email");
+
+	//z³¹czenie imienia z nazwiskiem, ale nie wiem jak potem takie pole dodawaæ do bazy...
+		@*columns.Add()
+			.Caption("Name")
+			.CalculateCellValue(@<text>
+				function(data) {
+					return [data.FirstName, data.LastName].join(" ");
+				}
+			</text>);*@
+		//columns.Add().DataField("Active").DataType(GridColumnDataType.Boolean);
+	})
+	.Editing(e =>
+	{
+		e.AllowAdding(true);
+		e.AllowUpdating(true);
+		e.AllowDeleting(true);
+		e.UseIcons(true);
+	})
+	.Paging(p => p.PageSize(50))
+	.FilterRow(f => f.Visible(true))
+	.HeaderFilter(f => f.Visible(true))
+	.GroupPanel(p => p.Visible(true))
+	.Grouping(g => g.AutoExpandAll(true)) //by³o false...
+	.RemoteOperations(true)
+	.AllowColumnResizing(true)
+	.AllowColumnReordering(true)
+)
+
+
+@*TUTAJ PRACUJÊ...@(Html.DevExtreme().TreeList()
+	.ID("employees")
+	.DataSourced(d => d.Mvc()
+	.RootValue(-1)
+	.KeyExpr("Id")
+	.ParentIdExpr("Head_ID")
+	.Columns(columns => {
+		columns.Add()
+			.DataField("Title")
+			.Caption("Position");
+
+		columns.Add().DataField("Full_Name");
+
+		columns.Add().DataField("City");
+
+		columns.Add().DataField("State");
+
+		columns.Add().DataField("Mobile_Phone");
+
+		columns.Add()
+			.DataField("Hire_Date")
+			.DataType(GridColumnDataType.Date);
+	})
+	.ShowRowLines(true)
+	.ShowBorders(true)
+	.ColumnAutoWidth(true)
+	.ExpandedRowKeys(new[] { 1 })
+)*@
