@@ -14,10 +14,6 @@
    "Tables": [
       {
          "HasPrimaryKey": true,
-         "Name": "[dbo].[DrzewkoTable]"
-      },
-      {
-         "HasPrimaryKey": true,
          "Name": "[dbo].[TestTable]"
       }
    ],

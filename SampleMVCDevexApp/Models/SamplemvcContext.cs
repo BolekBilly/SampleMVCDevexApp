@@ -16,39 +16,10 @@ namespace SampleMVCDevexApp.Models
         {
         }
 
-        public virtual DbSet<DrzewkoTable> DrzewkoTable { get; set; }
         public virtual DbSet<TestTable> TestTable { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<DrzewkoTable>(entity =>
-            {
-                entity.HasNoKey();
-
-                entity.Property(e => e.Department).HasMaxLength(255);
-
-                entity.Property(e => e.Description).HasMaxLength(255);
-
-                entity.Property(e => e.Email).HasMaxLength(255);
-
-                entity.Property(e => e.FirstName).HasMaxLength(255);
-
-                entity.Property(e => e.HeadId)
-                    .HasColumnName("Head_id")
-                    .HasMaxLength(10)
-                    .IsFixedLength();
-
-                entity.Property(e => e.Id)
-                    .IsRequired()
-                    .HasMaxLength(255);
-
-                entity.Property(e => e.LastName).HasMaxLength(255);
-
-                entity.Property(e => e.Office).HasMaxLength(255);
-
-                entity.Property(e => e.Phone).HasMaxLength(255);
-            });
-
             modelBuilder.Entity<TestTable>(entity =>
             {
                 entity.Property(e => e.Id).HasMaxLength(255);
@@ -60,6 +31,8 @@ namespace SampleMVCDevexApp.Models
                 entity.Property(e => e.Email).HasMaxLength(255);
 
                 entity.Property(e => e.FirstName).HasMaxLength(255);
+
+                entity.Property(e => e.HeadId).HasMaxLength(255);
 
                 entity.Property(e => e.LastName).HasMaxLength(255);
 

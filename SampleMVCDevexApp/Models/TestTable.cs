@@ -14,5 +14,6 @@ namespace SampleMVCDevexApp.Models
         public string Office { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string HeadId { get; set; }
     }
 }

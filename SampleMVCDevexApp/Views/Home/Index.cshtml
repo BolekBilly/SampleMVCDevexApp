@@ -1,6 +1,6 @@
 @using SampleMVCDevexApp.Models
 
-<h2>Home</h2>
+<h2>Data Grid</h2>
 
 @(Html.DevExtreme().DataGrid().ID("gridTest")
 	.ShowBorders(true)
@@ -12,24 +12,15 @@
 		.DeleteAction("DeleteTestData")
 		.Key("Id"))
 	.Columns(columns => {
-		columns.Add().DataField("Id"); //.AllowEditing(false);
-		columns.Add().DataField("FirstName");
-		columns.Add().DataField("LastName");
-		columns.Add().DataField("Description");
-		columns.Add().DataField("Department");
-		columns.Add().DataField("Office");
-		columns.Add().DataField("Phone");
-		columns.Add().DataField("Email");
-
-	//z³¹czenie imienia z nazwiskiem, ale nie wiem jak potem takie pole dodawaæ do bazy...
-		@*columns.Add()
-			.Caption("Name")
-			.CalculateCellValue(@<text>
-				function(data) {
-					return [data.FirstName, data.LastName].join(" ");
-				}
-			</text>);*@
-		//columns.Add().DataField("Active").DataType(GridColumnDataType.Boolean);
+	columns.Add().DataField("Id"); //.AllowEditing(false);
+	columns.Add().DataField("FirstName");
+	columns.Add().DataField("LastName");
+	columns.Add().DataField("Description");
+	columns.Add().DataField("Department");
+	columns.Add().DataField("Office");
+	columns.Add().DataField("Phone");
+	columns.Add().DataField("Email");
+	columns.Add().DataField("HeadId");
 	})
 	.Editing(e =>
 	{
@@ -38,7 +29,7 @@
 		e.AllowDeleting(true);
 		e.UseIcons(true);
 	})
-	.Paging(p => p.PageSize(50))
+	.Paging(p => p.PageSize(10))
 	.FilterRow(f => f.Visible(true))
 	.HeaderFilter(f => f.Visible(true))
 	.GroupPanel(p => p.Visible(true))
@@ -48,32 +39,43 @@
 	.AllowColumnReordering(true)
 )
 
+<br />
+<h2>Tree List</h2>
+@(Html.DevExtreme().TreeList()
+		.ID("treeTest")
+		.DataSource(d => d.Mvc()
+			.Controller("SampleData")
+			.LoadAction("GetTreeList")
+			.InsertAction("InsertTreeList")
+			.UpdateAction("UpdateTreeList")
+			//.DeleteAction("DeleteTreeList")
+			.Key("Id"))
+		.KeyExpr("Id")
+		.ParentIdExpr("HeadId")
+		.Columns(columns => {
+			columns.Add().DataField("Id"); //.AllowEditing(false);
+			columns.Add().DataField("FirstName");
+			columns.Add().DataField("LastName");
+			columns.Add().DataField("Description");
+			columns.Add().DataField("Department");
+			columns.Add().DataField("Office");
+			columns.Add().DataField("Phone");
+			columns.Add().DataField("Email");
+			columns.Add().DataField("HeadId");
+		})
+		.Editing(e =>
+		{
+			e.AllowAdding(true);
+			e.AllowUpdating(true);
+			e.AllowDeleting(true);
+			e.UseIcons(true);
+		})
+		.ShowRowLines(true)
+		.ShowBorders(true)
+		//.ColumnAutoWidth(true)
+		//.ExpandedRowKeys(new[] { 1 })
+		.Selection(s=>s.Mode(SelectionMode.Single))
+		.AllowColumnResizing(true)
+	)
 
-@*TUTAJ PRACUJÊ...@(Html.DevExtreme().TreeList()
-	.ID("employees")
-	.DataSourced(d => d.Mvc()
-	.RootValue(-1)
-	.KeyExpr("Id")
-	.ParentIdExpr("Head_ID")
-	.Columns(columns => {
-		columns.Add()
-			.DataField("Title")
-			.Caption("Position");
-
-		columns.Add().DataField("Full_Name");
-
-		columns.Add().DataField("City");
-
-		columns.Add().DataField("State");
-
-		columns.Add().DataField("Mobile_Phone");
-
-		columns.Add()
-			.DataField("Hire_Date")
-			.DataType(GridColumnDataType.Date);
-	})
-	.ShowRowLines(true)
-	.ShowBorders(true)
-	.ColumnAutoWidth(true)
-	.ExpandedRowKeys(new[] { 1 })
-)*@
+<br /><br /><br /><br />

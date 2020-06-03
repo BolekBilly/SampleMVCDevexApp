@@ -27,8 +27,25 @@ namespace SampleMVCDevexApp.Controllers {
             return DataSourceLoader.Load(DbContext.TestTable, loadOptions);
         }
 
+        public object GetTreeList(DataSourceLoadOptions loadOptions)
+        {
+            return DataSourceLoader.Load(DbContext.TestTable, loadOptions);
+        }
+
         [HttpPost]
         public IActionResult InsertTestData(string values)
+        {
+            var item = new TestTable();
+            JsonConvert.PopulateObject(values, item);
+
+            if (!TryValidateModel(item))
+                return BadRequest("error");
+
+            DbContext.TestTable.Add(item);
+            DbContext.SaveChanges();
+            return Ok();
+        }
+        public IActionResult InsertTreeList(string values)
         {
             var item = new TestTable();
             JsonConvert.PopulateObject(values, item);
@@ -53,6 +70,18 @@ namespace SampleMVCDevexApp.Controllers {
             DbContext.SaveChanges();
             return Ok();
         }
+        public IActionResult UpdateTreeList(string key, string values)
+        {
+            var item = DbContext.TestTable.First(a => a.Id == key); //String.Compare(key, a.Id, StringComparison.OrdinalIgnoreCase));
+            JsonConvert.PopulateObject(values, item);
+
+            if (!TryValidateModel(item))
+                return BadRequest("Error");// ModelState.GetFullErrorMessage());
+
+            DbContext.SaveChanges();
+            return Ok();
+        }
+
         [HttpDelete]
         public IActionResult DeleteTestData(string key)
         {
@@ -66,5 +95,16 @@ namespace SampleMVCDevexApp.Controllers {
             return Ok();
         }
 
+        //public IActionResult DeleteTreeList(string key)
+        //{
+        //    var item = DbContext.TestTable.First(a => a.Id == key);
+
+        //    if (!TryValidateModel(item))
+        //        return BadRequest("Error");// ModelState.GetFullErrorMessage());
+            
+        //    DbContext.TestTable.Remove(item);
+        //    DbContext.SaveChanges();
+        //    return Ok();
+        //}
     }
 }
