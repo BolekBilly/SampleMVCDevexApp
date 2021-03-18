@@ -1,81 +1,97 @@
 @using SampleMVCDevexApp.Models
+@*@using DevExtreme.MVC.Demos.ViewModels*@
+@model ElObject
 
-<h2>Data Grid</h2>
+<script src="~/js/index.js"></script>
 
-@(Html.DevExtreme().DataGrid().ID("gridTest")
-	.ShowBorders(true)
-	.DataSource(d => d.Mvc()
-		.Controller("SampleData")
-		.LoadAction("GetTestData")
-		.InsertAction("InsertTestData")
-		.UpdateAction("UpdateTestData")
-		.DeleteAction("DeleteTestData")
-		.Key("Id"))
-	.Columns(columns => {
-	columns.Add().DataField("Id"); //.AllowEditing(false);
-	columns.Add().DataField("FirstName");
-	columns.Add().DataField("LastName");
-	columns.Add().DataField("Description");
-	columns.Add().DataField("Department");
-	columns.Add().DataField("Office");
-	columns.Add().DataField("Phone");
-	columns.Add().DataField("Email");
-	columns.Add().DataField("HeadId");
-	})
-	.Editing(e =>
-	{
-		e.AllowAdding(true);
-		e.AllowUpdating(true);
-		e.AllowDeleting(true);
-		e.UseIcons(true);
-	})
-	.Paging(p => p.PageSize(10))
-	.FilterRow(f => f.Visible(true))
-	.HeaderFilter(f => f.Visible(true))
-	.GroupPanel(p => p.Visible(true))
-	.Grouping(g => g.AutoExpandAll(true)) //by³o false...
-	.RemoteOperations(true)
-	.AllowColumnResizing(true)
-	.AllowColumnReordering(true)
-)
+<script>
+
+
+function GenerateEl() {
+
+	console.log("GenerateEl");
+
+    let form = $("#form").dxForm("instance");
+	let formData = form.option("formData");
+	console.log(formData);
+
+	//TODO: walidacja czy wszystkie dane wype³nione prawid³owo
+	//
+
+	let formDataStringify = JSON.stringify(formData);
+	console.log(formDataStringify);
+
+
+	$.post("@Url.Action("Generate", "GenerateEl")", { values: formDataStringify }, function (data) {
+		console.log(data);
+		if (data.includes("OK")) {
+			DevExpress.ui.notify(data);
+		}
+		else {
+            DevExpress.ui.notify(data, "error", 10000);
+		}
+	});
+
+}
+
+</script>
+
+
+
+<div id="form">
+	@(Html.DevExtreme().Form<ElObject>()
+		.ID("form")
+		.Items(items => {
+			items.AddGroup()
+				.CssClass("first-group")
+				.ColCount(4)
+				.Items(groupItems => {
+					//groupItems.AddSimple().Template("<div class='form-avatar'></div>");
+					groupItems.AddGroup().ColSpan(3).Items(secondGroupItems => {
+						secondGroupItems.AddSimpleFor(m => m.ElName).Name("EL").Editor(e => e
+								.SelectBox()
+								.DataSource(new[] { "ogolne", "stale", "hotline", "ksiegowosc" })
+								.Value(""));
+						secondGroupItems.AddSimpleFor(m => m.Rodo).Name("RODO").Editor(e => e
+								.SelectBox()
+								.DataSource(new[] { "YES", "NO" })
+								.Value(""));
+						secondGroupItems.AddSimpleFor(m => m.KCentral).Name("KCentral").Editor(e => e
+								.SelectBox()
+								.DataSource(new[] { "YES", "NO" })
+								.Value(""));
+						secondGroupItems.AddSimpleFor(m => m.Language).Name("Language").Editor(e => e
+								.SelectBox()
+								.DataSource(new[] { "Polish", "English" })
+								.Value(""));
+						secondGroupItems.AddSimpleFor(m => m.Office).Name("Office").Editor(e => e
+								.SelectBox()
+								.DataSource(new[] { "Gdansk", "Katowice", "Krakow", "Poznan", "Warszawa", "Wroclaw", "Lodz" })
+								.Value(""));
+						secondGroupItems.AddSimpleFor(m => m.FileName).Name("File Name");
+						//secondGroupItems.AddSimpleFor(m => m.FileDestination).Name("File Destination");
+					});
+				});
+
+			items.AddGroup()
+				.CssClass("second-group")
+				.ColCount(2)
+				.Items(groupItems => {
+					groupItems.AddGroup().Items(secondGroupItems => {
+						secondGroupItems.AddSimpleFor(m => m.Company);
+						secondGroupItems.AddSimpleFor(m => m.Street);
+						secondGroupItems.AddSimpleFor(m => m.CityZipCode);
+						secondGroupItems.AddSimpleFor(m => m.Country);
+
+					});
+				});
+		})
+		.FormData(Model)
+    )
+</div>
 
 <br />
-<h2>Tree List</h2>
-@(Html.DevExtreme().TreeList()
-		.ID("treeTest")
-		.DataSource(d => d.Mvc()
-			.Controller("SampleData")
-			.LoadAction("GetTreeList")
-			.InsertAction("InsertTreeList")
-			.UpdateAction("UpdateTreeList")
-			//.DeleteAction("DeleteTreeList")
-			.Key("Id"))
-		.KeyExpr("Id")
-		.ParentIdExpr("HeadId")
-		.Columns(columns => {
-			columns.Add().DataField("Id"); //.AllowEditing(false);
-			columns.Add().DataField("FirstName");
-			columns.Add().DataField("LastName");
-			columns.Add().DataField("Description");
-			columns.Add().DataField("Department");
-			columns.Add().DataField("Office");
-			columns.Add().DataField("Phone");
-			columns.Add().DataField("Email");
-			columns.Add().DataField("HeadId");
-		})
-		.Editing(e =>
-		{
-			e.AllowAdding(true);
-			e.AllowUpdating(true);
-			e.AllowDeleting(true);
-			e.UseIcons(true);
-		})
-		.ShowRowLines(true)
-		.ShowBorders(true)
-		//.ColumnAutoWidth(true)
-		//.ExpandedRowKeys(new[] { 1 })
-		.Selection(s=>s.Mode(SelectionMode.Single))
-		.AllowColumnResizing(true)
-	)
+<div class="toolCell">
+	@(Html.DevExtreme().Button().Text("Generuj").ID("btnGenerateEl").OnClick("GenerateEl").Width(150))
+</div>
 
-<br /><br /><br /><br />

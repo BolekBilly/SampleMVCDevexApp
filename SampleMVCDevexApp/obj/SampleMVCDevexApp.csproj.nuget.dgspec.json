@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bmuzalewski\\Desktop\\PROJEKTY\\013 Zadanie_MVC\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj": {}
+    "C:\\Users\\bmuzalewski\\source\\repos\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bmuzalewski\\Desktop\\PROJEKTY\\013 Zadanie_MVC\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj": {
+    "C:\\Users\\bmuzalewski\\source\\repos\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bmuzalewski\\Desktop\\PROJEKTY\\013 Zadanie_MVC\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj",
+        "projectUniqueName": "C:\\Users\\bmuzalewski\\source\\repos\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj",
         "projectName": "SampleMVCDevexApp",
-        "projectPath": "C:\\Users\\bmuzalewski\\Desktop\\PROJEKTY\\013 Zadanie_MVC\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj",
+        "projectPath": "C:\\Users\\bmuzalewski\\source\\repos\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj",
         "packagesPath": "C:\\Users\\bmuzalewski\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bmuzalewski\\Desktop\\PROJEKTY\\013 Zadanie_MVC\\SampleMVCDevexApp\\SampleMVCDevexApp\\obj\\",
+        "outputPath": "C:\\Users\\bmuzalewski\\source\\repos\\SampleMVCDevexApp\\SampleMVCDevexApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bmuzalewski\\Desktop\\PROJEKTY\\013 Zadanie_MVC\\SampleMVCDevexApp\\NuGet.Config",
+          "C:\\Users\\bmuzalewski\\source\\repos\\SampleMVCDevexApp\\NuGet.Config",
           "C:\\Users\\bmuzalewski\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -28,6 +28,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -39,6 +40,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "CsvHelper": {
               "target": "Package",
@@ -51,6 +53,14 @@
             "DevExtreme.AspNet.Data": {
               "target": "Package",
               "version": "[2.5.1, )"
+            },
+            "DocumentFormat.OpenXml": {
+              "target": "Package",
+              "version": "[2.12.3, )"
+            },
+            "DocumentFormat.OpenXmlSDK": {
+              "target": "Package",
+              "version": "[2.0.0, )"
             },
             "EPPlus": {
               "target": "Package",
@@ -153,7 +163,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

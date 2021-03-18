@@ -61,7 +61,7 @@ namespace SampleMVCDevexApp.Controllers {
         [HttpPut]
         public IActionResult UpdateTestData(string key, string values)
         {
-            var item = DbContext.TestTable.First(a => a.Id == key); //String.Compare(key, a.Id, StringComparison.OrdinalIgnoreCase));
+            var item = DbContext.TestTable.First(a => a.Id == key);
             JsonConvert.PopulateObject(values, item);
 
             if (!TryValidateModel(item))
@@ -95,16 +95,18 @@ namespace SampleMVCDevexApp.Controllers {
             return Ok();
         }
 
-        //public IActionResult DeleteTreeList(string key)
-        //{
-        //    var item = DbContext.TestTable.First(a => a.Id == key);
+        public IActionResult DeleteTreeList(string key)
+        {
+            var item = DbContext.TestTable.First(a => a.Id == key);
 
-        //    if (!TryValidateModel(item))
-        //        return BadRequest("Error");// ModelState.GetFullErrorMessage());
-            
-        //    DbContext.TestTable.Remove(item);
-        //    DbContext.SaveChanges();
-        //    return Ok();
-        //}
+            if (!TryValidateModel(item))
+                return BadRequest("Error");// ModelState.GetFullErrorMessage());
+
+            DbContext.TestTable.Remove(item);
+            DbContext.SaveChanges();
+            return Ok();
+        }
+
+
     }
 }

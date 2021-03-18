@@ -1,12 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "vDzxhQg/d+33HR8fDptbKBJGhJUoOIhKm723ixySvyPUcaBYJJB/Y1/2fmRTTiBPAOnZLKFrF+MCcXqVFGHLzA==",
+  "dgSpecHash": "XhQ7Ct514vR52ITizGZqlsJy1qdAnUSJzR3Ny22i6fhkpGr3F1tif1ydiUrgZuA1LkahGDXoyMUIJF/oAEzTDw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bmuzalewski\\Desktop\\PROJEKTY\\013 Zadanie_MVC\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj",
+  "projectFilePath": "C:\\Users\\bmuzalewski\\source\\repos\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\csvhelper\\15.0.0\\csvhelper.15.0.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\devextreme.aspnet.core\\19.2.7\\devextreme.aspnet.core.19.2.7.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\devextreme.aspnet.data\\2.5.1\\devextreme.aspnet.data.2.5.1.nupkg.sha512",
+    "C:\\Users\\bmuzalewski\\.nuget\\packages\\documentformat.openxml\\2.12.3\\documentformat.openxml.2.12.3.nupkg.sha512",
+    "C:\\Users\\bmuzalewski\\.nuget\\packages\\documentformat.openxmlsdk\\2.0.0\\documentformat.openxmlsdk.2.0.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\epplus\\4.5.3.3\\epplus.4.5.3.3.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\exceldatareader\\3.6.0\\exceldatareader.3.6.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\exceldatareader.dataset\\3.6.0\\exceldatareader.dataset.3.6.0.nupkg.sha512",
@@ -179,6 +181,7 @@
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\system.io.compression.zipfile\\4.3.0\\system.io.compression.zipfile.4.3.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\system.io.filesystem\\4.3.0\\system.io.filesystem.4.3.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\system.io.filesystem.primitives\\4.3.0\\system.io.filesystem.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\bmuzalewski\\.nuget\\packages\\system.io.packaging\\4.7.0\\system.io.packaging.4.7.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\system.linq.expressions\\4.3.0\\system.linq.expressions.4.3.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
@@ -241,5 +244,16 @@
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'DocumentFormat.OpenXmlSDK 2.0.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
+      "libraryId": "DocumentFormat.OpenXmlSDK",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.1"
+      ]
+    }
+  ]
 }
