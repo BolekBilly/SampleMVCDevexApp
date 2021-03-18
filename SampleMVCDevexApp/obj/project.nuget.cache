@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "vDzxhQg/d+33HR8fDptbKBJGhJUoOIhKm723ixySvyPUcaBYJJB/Y1/2fmRTTiBPAOnZLKFrF+MCcXqVFGHLzA==",
+  "dgSpecHash": "GMnjv5eF5fyy/tydwsvdkPq6TQ8l6w8zod+8mppH+2/fvrXvTnlmMEUEWs5puJfseLuYlywZrUlWd3GbdwOBYA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bmuzalewski\\Desktop\\PROJEKTY\\013 Zadanie_MVC\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj",
+  "projectFilePath": "C:\\Users\\bmuzalewski\\source\\repos\\SampleMVCDevexApp\\SampleMVCDevexApp\\SampleMVCDevexApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\csvhelper\\15.0.0\\csvhelper.15.0.0.nupkg.sha512",
     "C:\\Users\\bmuzalewski\\.nuget\\packages\\devextreme.aspnet.core\\19.2.7\\devextreme.aspnet.core.19.2.7.nupkg.sha512",
